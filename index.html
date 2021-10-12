@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript &lt;3 Firebase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/95b81c3774.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div>
+        <header id="cabecalho">
+            <h1>JavaScript <span class="love"><i class="fas fa-heart"></i></span> Firebase</h1>
+        </header>
+        <section id="sensores">
+            <h2>Monitoramento do Sensor</h2>
+            <section class="linha">
+                <article class="card">
+                    <div class="cabecalho-card">
+                        <i class="fab fa-watchman-monitoring"></i>
+                    </div>
+                    <div class="rodape-card">
+                        <h3>Monóxido de Carbono (CO)</h3>
+                        <p>
+                            <img id="loading" src="https://olaargentina.com/wp-content/uploads/2019/11/loading-gif-transparent-10.gif">
+                            <span id="nivel-monoxido"></span>
+                        </p>
+                        <div class="sinais">
+                            <div id="sinal-amarelo" class="sinal"></div>
+                            <div id="sinal-verde" class="sinal"></div>
+                            <div id="sinal-vermelho" class="sinal"></div>
+                        </div>
+                        <div>
+                            <p id="status-monoxido">Normal</p>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </section>
+        <footer>
+            <p></p>
+            <p>Protocolos de Comunicação para IoT / Pós-Graduação em Internet das Coisas</p>
+            <p>Instituto Federal de Educação, Ciência e Tecnologia de São Paulo - Campus Catanduva</p>
+        </footer>
+    </div>
+
+    <script type="module" src="js/script.js"></script>
+</body>
+</html>
