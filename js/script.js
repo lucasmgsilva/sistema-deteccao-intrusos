@@ -20,15 +20,16 @@
     import { getDatabase, ref, onValue, query, limitToLast } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js";
 
     const db = getDatabase();
-    const dbRef = query(ref(db, '/sensores/monoxido-carbono/'), limitToLast(1));
+    const dbRef = query(ref(db, '/sensores/pir/'), limitToLast(1));
 
-    let spanNivel = document.getElementById('nivel-monoxido');
-    let pStatus = document.getElementById('status-monoxido');
+    let spanStatus = document.getElementById('status');
     let imgLoading = document.getElementById('loading');
 
-    let divSinalAmarelo = document.getElementById('sinal-amarelo');
     let divSinalVerde = document.getElementById('sinal-verde');
     let divSinalVermelho = document.getElementById('sinal-vermelho');
+
+    const somAlerta = new Audio('../sounds/Spaceship Alarm.mp3');
+    somAlerta.loop = true;
 
     let cores = {
         'amarelo_escuro': '#404000',
@@ -45,45 +46,46 @@
         snapshot.forEach((childSnapshot) => {
             const childKey = childSnapshot.key;
             const childData = childSnapshot.val();
-            console.log("Key: " + childKey);
-            console.log("Value: " + childData.value);
+            console.log("Chave: " + childKey);
+            console.log("Valor: " + childData);
+            console.log(childData);
             exibeNiveisMonoxidoCarbono(childKey, childData);
         });
     });
 
-    function acionaSinalAmarelo(msg){ 
-        divSinalAmarelo.style = 'background-color: ' + cores['amarelo'];
-        pStatus.innerText = msg;
+    function ativaSomAlerta(){
+        somAlerta.currentTime = 0;
+        somAlerta.play();
+    }
+
+    function desativaSomAlerta(){
+        somAlerta.pause();
     }
 
     function acionaSinalVerde(msg){
         divSinalVerde.style = 'background-color: ' + cores['verde'];
-        pStatus.innerText = msg;
+        spanStatus.innerText = msg;
+        desativaSomAlerta();
     }
 
     function acionaSinalVermelho(msg){
         divSinalVermelho.style = 'background-color: ' + cores['vermelho'];
-        pStatus.innerText = msg;
+        spanStatus.innerText = msg;
+        ativaSomAlerta();
     }
 
     function apagaTodosSinais(){
-        divSinalAmarelo.style = 'background-color: ' + cores['amarelo_escuro'];
         divSinalVerde.style = 'background-color: ' + cores['verde_escuro'];
         divSinalVermelho.style = 'background-color: ' + cores['vermelho_escuro'];
     }
 
     function exibeNiveisMonoxidoCarbono(key, data) {
         apagaTodosSinais();
-        let ppm = data.value;
-        spanNivel.innerText = ppm + " ppm";
+        let movimentoDetectado = data;
 
-        if (ppm < 15){
-            acionaSinalVerde("Normal");
-        } else if (ppm <= 30){
-            acionaSinalAmarelo("Situação Inadequada");
-        } else if (ppm <= 40) {
-            acionaSinalVermelho("Situação Péssima");
+        if (movimentoDetectado == 0){
+            acionaSinalVerde("Tudo bem :)");
         } else {
-            acionaSinalVermelho("Situação Crítica");
+            acionaSinalVermelho("Movimento detectado!");
         }
     }

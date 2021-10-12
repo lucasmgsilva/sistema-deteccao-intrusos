@@ -39,10 +39,6 @@ article.card {
     margin-bottom: 40px;
 }
 
-div.cabecalho-card {
-
-}
-
 div.cabecalho-card i {
     font-size: 90px;
     padding: 20px;
@@ -84,17 +80,14 @@ div.sinal {
 }
 
 div#sinal-amarelo {
-    background-color: yellow;
     background-color: rgb(64, 64, 0);
 }
 
 div#sinal-verde {
-    background-color: rgb(0, 255, 0);
-    --background-color: rgb(0, 64, 0);
+    background-color: rgb(0, 64, 0);
 }
 
 div#sinal-vermelho {
-    background-color: red;
     background-color: rgb(64, 0, 0);
 }
 
