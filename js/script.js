@@ -65,13 +65,13 @@
     function acionaSinalVerde(msg){
         divSinalVerde.style = 'background-color: ' + cores['verde'];
         spanStatus.innerText = msg;
-        desativaSomAlerta();
+        //desativaSomAlerta();
     }
 
     function acionaSinalVermelho(msg){
         divSinalVermelho.style = 'background-color: ' + cores['vermelho'];
         spanStatus.innerText = msg;
-        ativaSomAlerta();
+        //ativaSomAlerta();
     }
 
     function apagaTodosSinais(){
